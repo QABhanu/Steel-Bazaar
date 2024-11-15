@@ -17,14 +17,20 @@ public class Homepage{
 	}
     @FindBy(xpath = "(//input[@placeholder='Search anything in steel...'])[1]")
     private WebElement cataloguesearchfield;
-
+     
     @FindBy(xpath = "//li[text()='tata Hot Rolled Single length coil 10']")
     private WebElement cataloguefind;
      
     @FindBy(xpath = "//img[@class='cursor-pointer' and @src='/static/media/footerLogo.0b4b88fa279567e1afede2ba2f373af4.svg']")
     private WebElement steelbazaarIcon;
 
+    @FindBy(xpath = "//img[@class='cursor-pointer' and @src='/static/media/footerLogo.0b4b88fa279567e1afede2ba2f373af4.svg']")
+    private WebElement Categories;
 
+    @FindBy(xpath = "(//button[normalize-space(text())='View All'])[1]")
+    private WebElement viewallbutton;
+
+     
     public void search(String searchText) throws Throwable {
 		cataloguesearchfield.click();
 		
@@ -41,7 +47,9 @@ public class Homepage{
 
        steelbazaarIcon.click();
 
-       
+       viewallbutton.click();
+
+
         
        }
 
