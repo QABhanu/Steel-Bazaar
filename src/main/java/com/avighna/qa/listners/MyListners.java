@@ -34,8 +34,6 @@ public class MyListners implements ITestListener {
 
 	}
 
-	
-
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 
@@ -68,10 +66,10 @@ public class MyListners implements ITestListener {
 		extentTest.log(Status.FAIL, result.getName() + " got failed");
 
 	}
-	
+
 	@Override
 	public void onFinish(ITestContext context) {
-		
+
 		extentReport.flush();
 
 		String pathOfExtentReport = System.getProperty("user.dir") + "\\test-output\\ExtentReports\\extentReport.html";

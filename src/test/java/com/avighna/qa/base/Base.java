@@ -66,10 +66,11 @@ public class Base {
 
 		}
 
+		driver.get(prop.getProperty("url_staging"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.IMPLICIT_WAIT_TIME));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Utilities.PAGE_LOAD_TIME));
-		driver.get(prop.getProperty("url_staging"));
+		
 
 		return driver;
 
