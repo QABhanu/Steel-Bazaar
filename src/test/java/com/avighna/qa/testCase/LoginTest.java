@@ -32,8 +32,12 @@ public class LoginTest extends Base{
 
 		
 	}
+	public void ValidateLogin() {
+		
+		
+	}
 	
-	//@AfterMethod
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 		

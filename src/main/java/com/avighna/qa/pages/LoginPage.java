@@ -34,11 +34,8 @@ public class LoginPage {
 	public void ValidLogin(String email, String password) throws Throwable {
 		emailIconField.click();
 		emailLoginField.click();
-	//	Thread.sleep(3000);
 		emailAccountField.sendKeys(email);
-	//	Thread.sleep(6000);
 		passwordField.sendKeys(password);
-	//	Thread.sleep(6000);
 		loginButton.click();
 		
 	}
