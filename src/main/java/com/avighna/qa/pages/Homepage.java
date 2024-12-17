@@ -1,7 +1,9 @@
 package com.avighna.qa.pages;
 
+import java.util.NoSuchElementException;
 import java.util.Locale.Category;
 
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +19,10 @@ public class Homepage{
 		PageFactory.initElements(driver, this);
 
 	}
+
+  //Header of the SteelBazaar
+
+
     @FindBy(xpath = "(//input[@placeholder='Search anything in steel...'])[1]")
     private WebElement cataloguesearchfield;
      
@@ -43,8 +49,13 @@ public class Homepage{
 
     
 
+    
+
 
    
+
+
+
 
 
 
@@ -57,13 +68,19 @@ public class Homepage{
 		cataloguesearchfield.sendKeys("CRNO catalogue 8");
 
     
-       if (cataloguefind != null){
-        cataloguefind.click();
-        System.out.println("catalogue found ");
-       }
-       else{
-        System.out.println("catalogue not found ");
-       }
+       
+      try {
+        if (cataloguefind != null) {
+            cataloguefind.click();
+            System.out.println("Catalogue found and clicked.");
+        } else {
+            System.out.println("Catalogue not found.");
+        }
+    } catch (Exception e) {
+        System.out.println("An error occurred: " + e.getMessage());
+    }
+    
+
 
        steelbazaarIcon.click();
 
