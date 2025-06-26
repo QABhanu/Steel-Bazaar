@@ -7,36 +7,36 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.avighna.qa.base.Base;
-import com.avighna.qa.pages.PostProduct;
+import com.avighna.qa.pages.RFQPage;
 
-public class PostProductTest extends Base {
+public class RFQTest extends Base {
 
     private WebDriver driver;
-    private PostProduct postProduct;
+    private RFQPage rfqPage;
 
-    public PostProductTest(){
+    public RFQTest() {
         super();
     }
 
     @BeforeMethod
     public void setup() {
         driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browser"));
-        postProduct = new PostProduct(driver); // Initialize PostProduct page object
+        rfqPage = new RFQPage(driver);  // Initialize RFQPage object
     }
 
     @Test
     public void search() throws Throwable {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        ((JavascriptExecutor) driver).executeScript("document.body.style.zoom = '85%';" +"document.body.style.overflow = 'auto';");
+        // Example usage if needed: js.executeScript("document.body.style.zoom = '85%';");
 
-
-
-                postProduct.search("Null");
+        rfqPage.search("Null");
     }
 
     @AfterMethod
     public void tearDown() {
-         
-        
+        if (driver != null) {
+           //driver.quit();  // Close the browser after test
+        }
     }
 }
+
