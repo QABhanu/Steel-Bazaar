@@ -3,22 +3,20 @@ package com.avighna.qa.pages;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.interactions.Actions;
 
 public class PostProduct {
 
     private WebDriver driver;
     private Actions actions;
-    
 
-    
+    // --- Constructor ---
     public PostProduct(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
         PageFactory.initElements(driver, this);
-        
     }
 
     // --- Web Elements ---
@@ -53,89 +51,68 @@ public class PostProduct {
     @FindBy(xpath = "//button[text()='Add New Product']")
     private WebElement addNewProduct;
 
-    @FindBy(xpath = " //button[text()='Next']")
+    @FindBy(xpath = "//button[text()='Next']")
     private WebElement nextButton;
 
     @FindBy(xpath = "//input[contains(@class, 'PrivateSwitchBase-input') and @type='radio' and @value='27813']")
     private WebElement radioButton;
 
-
     @FindBy(xpath = "//button[normalize-space()='Next']")
     private WebElement nextButtonElement;
-    
-        
 
+    // --- Actions / Methods ---
 
-
-
-
-
-
-
-    
-
-    // --- Actions ---
-
-   
-    public void search(String searchText) throws Throwable {
+    public void search(String searchText) throws InterruptedException {
         Thread.sleep(2000);
         closeIcon.click();
+
         Thread.sleep(2000);
         cartIcon.click();
+
         Thread.sleep(1000);
         emailLoginButton.click();
-        
 
-        
         emailInput.sendKeys("27AAQFT1057Q1ZD@gmail.com");
+
         Thread.sleep(1000);
         passwordInput.sendKeys("Tina@123");
-        Thread.sleep(2000);
 
+        Thread.sleep(2000);
         loginButton.click();
+
         Thread.sleep(2000);
         cartIcon.click();
-        Thread.sleep(1000); 
+
+        Thread.sleep(1000);
         sellerToggle.click();
 
-
         mysellerDropdown.click();
+
         Thread.sleep(2000);
         postproducElement.click();
+
         Thread.sleep(2000);
         addNewProduct.click();
 
         moveMouseToElement(nextButton);
-        // nextButton.click();
         radioButton.click();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", nextButtonElement);
-
+        scrollToElement(nextButtonElement);
         moveMouseToElement(nextButtonElement);
-        
-   
-        }
-
-
-        public void moveMouseToElement(WebElement element) {
-            try {
-                // Hover
-                actions.moveToElement(element).perform();
-                Thread.sleep(1000); // wait a bit before clicking
-        
-                // Click after hover
-                actions.moveToElement(element).click().perform();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-
-
-
-
-
-        }
-
-    
     }
+
+    private void scrollToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
+    }
+
+    public void moveMouseToElement(WebElement element) {
+        try {
+            actions.moveToElement(element).perform();
+            Thread.sleep(1000);
+            actions.moveToElement(element).click().perform();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

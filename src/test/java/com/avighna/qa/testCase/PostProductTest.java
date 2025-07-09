@@ -17,6 +17,7 @@ public class PostProductTest extends Base {
     public PostProductTest(){
         super();
     }
+    
 
     @BeforeMethod
     public void setup() {
@@ -26,7 +27,6 @@ public class PostProductTest extends Base {
 
     @Test
     public void search() throws Throwable {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         ((JavascriptExecutor) driver).executeScript("document.body.style.zoom = '85%';" +"document.body.style.overflow = 'auto';");
 
 
@@ -40,3 +40,4 @@ public class PostProductTest extends Base {
         
     }
 }
+
